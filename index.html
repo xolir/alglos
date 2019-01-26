@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <style type="text/css">
+      body {
+        margin: 0;
+      }
+      #app {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      #divCost {
+          display: inline-block;
+      }
+      .controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      input {
+          margin-right: 20px;
+      }
+      label {
+          margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+        <label for="vert">Number of vertexes</label>
+        <input id="vert" type="number">
+        <label for="tries">Number of tries</label>
+        <input type="number" id="tries">
+        <label for="cost">Max cost of edge</label>
+        <input type="number" id="cost">
+        <button type="button" id="start">Draw</button>
+        <p id="divCost">Cost<span></span></p>
+    </div>
+    <div id="app"></div>
+
+    <script src="./dist/main.js"></script>
+  </body>
+</html>
