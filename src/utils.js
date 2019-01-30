@@ -48,21 +48,36 @@ export const getNDivisionsTest = ({ graphWeights, graphSize, numberOfTests }) =>
     let bestDivision = {
         cost: false,
         divisions: [],
+        sumCost: 0,
+        maximumCost: 0,
     };  
 
     new Array(numberOfTests).fill(0).forEach(() => {
         const division = getRandomTreeSplit(graphSize);
         const divisionCost = calculateDivisionCost(division, graphWeights);
 
+        bestDivision = {
+            ...bestDivision,
+            sumCost: bestDivision.sumCost + divisionCost,
+        }
+
         if (!bestDivision.cost || divisionCost < bestDivision.cost) {
             bestDivision = {
+                ...bestDivision,
                 cost: divisionCost,
                 divisions: division,
             }
         }
+
+        if (!bestDivision.maximumCost || (divisionCost > bestDivision.maximumCost)) {
+            bestDivision.maximumCost = divisionCost
+        }
     })
 
-    return bestDivision;
+    return {
+        ...bestDivision,
+        averageCost: parseInt(bestDivision.sumCost / numberOfTests),
+    };
 };
 
 const toRadian = (angle) => angle * Math.PI / 180;

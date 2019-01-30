@@ -16,7 +16,10 @@ const selectors = {
     tries: '#tries',
     cost: '#cost',
     startButton: "#start",
+    costNode: '#costs',
     divCost: '#divCost span',
+    medianCost: '#medianCost span',
+    maxCost: '#highestCost span',
 }
 
 const renderGraph = () => {
@@ -25,7 +28,12 @@ const renderGraph = () => {
     const graphSize = parseInt(document.querySelector(selectors.graphSize).value);
     const numberOfTests = parseInt(document.querySelector(selectors.tries).value);
     const maxCost = parseInt(document.querySelector(selectors.cost).value);
-    const divisonCostNode = document.querySelector(selectors.divCost);
+    const costsNode = document.querySelector(selectors.costNode)
+    const divisionCostNode = document.querySelector(selectors.divCost);
+    const divisionAverageCostNode = document.querySelector(selectors.medianCost);
+    const divisionMaxCostNode = document.querySelector(selectors.maxCost);
+
+    costsNode.classList.add('active');
 
     const graph = createTestGraphThree(graphSize, maxCost);
 
@@ -60,7 +68,9 @@ const renderGraph = () => {
     
     container.refresh();
 
-    divisonCostNode.innerHTML = split.cost;
+    divisionCostNode.innerHTML = split.cost;
+    divisionAverageCostNode.innerHTML = split.averageCost;
+    divisionMaxCostNode.innerHTML = split.maximumCost;
 }
 
 const getEdgeColour = (divisions, primaryVertex, secondaryVertex) => {

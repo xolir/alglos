@@ -9,9 +9,7 @@
         width: 100%;
         height: 100%;
       }
-      #divCost {
-          display: inline-block;
-      }
+
       .controls {
         display: flex;
         flex-direction: row;
@@ -25,6 +23,22 @@
       label {
           margin-right: 10px;
       }
+
+      #costs {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 40px;
+      }
+
+      #costs span {
+        margin-left: 10px;
+        display: inline-block;
+      }
+
+      #costs.active {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -36,7 +50,11 @@
         <label for="cost">Max cost of edge</label>
         <input type="number" id="cost">
         <button type="button" id="start">Draw</button>
-        <p id="divCost">Cost<span></span></p>
+        <div id="costs">
+            <p id="divCost">Min Cost<span></span></p>
+            <p id="medianCost">Average cost<span></span></p>
+            <p id="highestCost">Highest cost<span></span></p>
+        </div>
     </div>
     <div id="app"></div>
 
