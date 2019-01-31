@@ -20,6 +20,7 @@ const selectors = {
     divCost: '#divCost span',
     medianCost: '#medianCost span',
     maxCost: '#highestCost span',
+    fullCost: '#fullCost span',
 }
 
 const renderGraph = () => {
@@ -32,6 +33,7 @@ const renderGraph = () => {
     const divisionCostNode = document.querySelector(selectors.divCost);
     const divisionAverageCostNode = document.querySelector(selectors.medianCost);
     const divisionMaxCostNode = document.querySelector(selectors.maxCost);
+    const fullCostNode = document.querySelector(selectors.fullCost);
 
     costsNode.classList.add('active');
 
@@ -68,9 +70,12 @@ const renderGraph = () => {
     
     container.refresh();
 
+    const fullGraphCost = graph.reduce((acc, { cost }) => acc + cost, 0);
+
     divisionCostNode.innerHTML = split.cost;
     divisionAverageCostNode.innerHTML = split.averageCost;
     divisionMaxCostNode.innerHTML = split.maximumCost;
+    fullCostNode.innerHTML = fullGraphCost;
 }
 
 const getEdgeColour = (divisions, primaryVertex, secondaryVertex) => {

@@ -27,8 +27,8 @@
       #costs {
         display: none;
         position: absolute;
-        right: 0;
-        top: 40px;
+        bottom: 0;
+        left: 0;
       }
 
       #costs span {
@@ -51,9 +51,10 @@
         <input type="number" id="cost">
         <button type="button" id="start">Draw</button>
         <div id="costs">
-            <p id="divCost">Min Cost<span></span></p>
-            <p id="medianCost">Average cost<span></span></p>
-            <p id="highestCost">Highest cost<span></span></p>
+            <p id="divCost">Minimal split Cost<span></span></p>
+            <p id="medianCost">Average split cost<span></span></p>
+            <p id="highestCost">Highest split cost<span></span></p>
+            <p id="fullCost">Full graph cost<span></span></p>
         </div>
     </div>
     <div id="app"></div>
